@@ -1,15 +1,3 @@
-/*
-TODO:
-X Maybe account for defaults: color: var(--header-color, blue);
-- Verify cross domain working or not (it is working from dropbox)
-- Option to wait to apply anything until all <link>s are parsed or inject what we have and update as each <link> returns
-- Need to test on a more complex CSS file
-- Option to save parsed file in local/session storage so there isn't a delay on additional page loads. Could only do it for links (with URLs to use as keys) and style blocks with IDs of some sort
-- Need to test more complex values like rgba(255,0,0,0.5); and something with !important
-- Try multiple links
-- Local links
-- Ajax driven site, or CSS added later the top of the stack
-*/
 let cssVarPoly = {
   init() {
     // first lets see if the browser supports CSS variables
