@@ -1,5 +1,5 @@
 let cssVarPoly = {
-  init() {
+  init: function() {
     // first lets see if the browser supports CSS variables
     // No version of IE supports window.CSS.supports, so if that isn't supported in the first place we know CSS variables is not supported
     // Edge supports supports, so check for actual variable support
@@ -23,7 +23,7 @@ let cssVarPoly = {
   },
   
   // find all the css blocks, save off the content, and look for variables
-  findCSS() {
+  findCSS: function() {
     let styleBlocks = document.querySelectorAll('style:not(.inserted),link[type="text/css"]');
 
     // we need to track the order of the style/link elements when we save off the CSS, set a counter
@@ -53,13 +53,13 @@ let cssVarPoly = {
   },
 
   // find all the "--variable: value" matches in a provided block of CSS and add them to the master list
-  findSetters(theCSS, counter) {
+  findSetters: function(theCSS, counter) {
     // console.log(theCSS);
     cssVarPoly.varsByBlock[counter] = theCSS.match(/(--.+:.+;)/g) || [];
   },
 
   // run through all the CSS blocks to update the variables and then inject on the page
-  updateCSS() {
+  updateCSS: function() {
     // first lets loop through all the variables to make sure later vars trump earlier vars
     cssVarPoly.ratifySetters(cssVarPoly.varsByBlock);
 
@@ -85,7 +85,7 @@ let cssVarPoly = {
   },
 
   // parse a provided block of CSS looking for a provided list of variables and replace the --var-name with the correct value
-  replaceGetters(curCSS, varList) {
+  replaceGetters: function(curCSS, varList) {
     // console.log(varList);
     for (let theVar in varList) {
       // console.log(theVar);
@@ -117,7 +117,7 @@ let cssVarPoly = {
   },
 
   // determine the css variable name value pair and track the latest
-  ratifySetters(varList) {
+  ratifySetters: function(varList) {
     // console.log("varList:",varList);
     // loop through each block in order, to maintain order specificity
     for (let curBlock in varList) {
@@ -138,7 +138,7 @@ let cssVarPoly = {
   },
 
   // get the CSS file (same domain for now)
-  getLink(url, counter, success) {
+  getLink: function(url, counter, success) {
     var request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.overrideMimeType('text/css;');
@@ -162,10 +162,6 @@ let cssVarPoly = {
 
     request.send();
   }
-  
 };
 
-// hash = function(s){
-//   return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-// }
 cssVarPoly.init();
