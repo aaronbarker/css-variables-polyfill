@@ -1,3 +1,4 @@
+@import 'test-import.css';
 :root {
   --externalcolor: red;
   --samename: orange;

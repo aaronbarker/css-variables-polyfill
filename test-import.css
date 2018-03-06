@@ -1,0 +1,4 @@
+.demo-import {
+  color: #f00;
+  color: var(--success2);
+}

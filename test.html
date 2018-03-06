@@ -39,14 +39,18 @@
   </style>
   <h2>Tests</h2>
   <p>On mosts tests (unless otherwise noted) success will be green text. We start with a <code>color:red;</code> and then override it with a <code>color:var(--success);</code> (or similar) which is green.</p>
-  <span class="samename">declare same variable over and over</span>
-  <span class="demo1">no whitespace on var() calls</span>
-  <span class="demo2">whitespace on var() calls</span>
-  <span class="demo3">Multiple variables in same call. orange means first var worked, green var worked</span>
-  <span class="inlineoverlink">orange if link won, green if style after link won</span>
-  <span class="lower">--foo: lowercase foo</span>
-  <span class="upper">--FOO: uppercase FOO</span>
-  <span class="fallback">uses fallback <code>--var(--wrongname, green)</code></span>
+  <ul>
+    <li><span class="samename">declare same variable over and over</span></li>
+    <li><span class="demo1">no whitespace on var() calls</span></li>
+    <li><span class="demo2">whitespace on var() calls</span></li>
+    <li><span class="demo3">Multiple variables in same call. orange means first var worked, green var worked</span></li>
+    <li><span class="inlineoverlink">orange if link won, green if style after link won</span></li>
+    <li><span class="lower">--foo: lowercase foo</span></li>
+    <li><span class="upper">--FOO: uppercase FOO</span></li>
+    <li><span class="fallback">uses fallback <code>--var(--wrongname, green)</code></span></li>
+    <li><span class="demo-import">css declared in an <code>@import</code></span> - not polyfilled yet. <a href="https://gist.github.com/stramel/91d05253f801f771da38b3bc7d3c765f#gistcomment-2258818">Identfied with a suggested fix</a>, but will require a bit of a re-write (to use document.styleSheets), so haven't done it yet.</li>
+  </ul>
+  
 
   <h2>Tests on external, cross-domain file</h2>
   <div class="documentation">
@@ -55,9 +59,12 @@
     <p><strong>IE 11</strong> seems to do fine.</p>
   </div>
 
-  <span class="demo4">Gets stuff from external .css file. Should start red and change to green on LINK load. border proves the CSS loaded, missing colors means script didn't get parsed and reinserted</span>
-  <span class="externalcolor">--externalcolor: should start red and change to green on LINK load</span>
-  <span class="externalfallback">uses fallback. should be green</span>
+  <ul>
+    <li><span class="demo4">Gets stuff from external .css file. Should start red and change to green on LINK load. border proves the CSS loaded, missing colors means script didn't get parsed and reinserted</span></li>
+    <li><span class="externalcolor">--externalcolor: should start red and change to green on LINK load</span></li>
+    <li><span class="externalfallback">uses fallback. should be green</span></li>
+  </ul>
+
 
   <p>Another set of text under the test for Opera Mini testing.</p>
   <!-- Copy above for codepen update -->
