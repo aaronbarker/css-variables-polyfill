@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polyfill test</title>
+  <link rel="stylesheet" type="text/css" media="all" href="test.css">
+  <link rel="stylesheet" type="text/css" media="all" href="http://aaronbarker.net/cssvars/vars.css?a">
+</head>
+<body>
+  <div class="documentation">
+    <!-- Copy below for codepen update -->
+    <h1>CSS Variables Polyfill</h1>
+    <p>
+      This is an attempt at a very basic <a href="https://drafts.csswg.org/css-variables/">CSS variables (custom properties)</a> polyfil. In reality this is more of a <em>partial</em> polyfill as it will not cover variables inside of variables, DOM scoping or anything else "fancy". Just taking variables declared anywhere in the CSS and
+      then re-parsing the CSS for var() statements and replacing them in browsers that don't natively support CSS variables.
+    </p>
+    <p>According to <a href="http://caniuse.com/#feat=css-variables">caniuse.com</a>, of current browsers only IE, Edge and Opera Mini do not support CSS variables. This polyfil appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.</p>
+
+    <p>As far as we can tell your browser <span class="supports">does <span class="no">not</span> support</span> native CSS variables. <span class="showforpolyfill">That means if you see green tests results below, it is thanks to the polyfill :).</span> <span class="hideforpolyfill">All the green test results below are actually native CSS Variable support.  Good job using a good browser :)</span></p>
+    
+    <h3>Does this work on externally CSS files?</h3>
+    <p>Yes!</p>
+    <h3>Even ones loaded from another domain?</h3>
+    <p>To go across domain, CSS needs to be served up with <code>Access-Control-Allow-Origin:*</code> headers.</p>
+
+
+  </div>
+  <a href="#d" class="hide-docs">Toggle documentation</a> (for Opera Mini vs Codepen issue)
+  <style>
+    :root {
+      --newcolor: #0f0;
+    }
+    
+    .inlineoverlink {
+      color: var(--success2);
+    }
+  </style>
+  <h2>Tests</h2>
+  <p>On mosts tests (unless otherwise noted) success will be green text. We start with a <code>color:red;</code> and then override it with a <code>color:var(--success);</code> (or similar) which is green.</p>
+  <span class="samename">declare same variable over and over</span>
+  <span class="demo1">no whitespace on var() calls</span>
+  <span class="demo2">whitespace on var() calls</span>
+  <span class="demo3">Multiple variables in same call. orange means first var worked, green var worked</span>
+  <span class="inlineoverlink">orange if link won, green if style after link won</span>
+  <span class="lower">--foo: lowercase foo</span>
+  <span class="upper">--FOO: uppercase FOO</span>
+  <span class="fallback">uses fallback <code>--var(--wrongname, green)</code></span>
+
+  <h2>Tests on external, cross-domain file</h2>
+  <div class="documentation">
+    <p><strong>Edge</strong> appears to be working well on Edge 13. Edge 12 was having some problems.</p>
+    <p><strong>Opera mini</strong> seems to work well too. This demo fails because not all the page is displayed, but I think that is a codepen issue, not a polyfill issue.  When the upper documentation is removed, all tests display well.</p>
+    <p><strong>IE 11</strong> seems to do fine.</p>
+  </div>
+
+  <span class="demo4">Gets stuff from external .css file. Should start red and change to green on LINK load. border proves the CSS loaded, missing colors means script didn't get parsed and reinserted</span>
+  <span class="externalcolor">--externalcolor: should start red and change to green on LINK load</span>
+  <span class="externalfallback">uses fallback. should be green</span>
+
+  <p>Another set of text under the test for Opera Mini testing.</p>
+  <!-- Copy above for codepen update -->
+</body>
+</html>

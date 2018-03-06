@@ -1,0 +1,111 @@
+:root {
+  --externalcolor: red;
+  --samename: orange;
+  --samename: #0f0;
+  --foo: green;
+  --FOO: #0f0;
+  --halfsuccess: orange;
+  --success: green;
+  --success2: #0f0;
+}
+
+html {
+  font-family: var(--fontsans);
+}
+
+.success {
+  color: green;
+}
+
+.fail {
+  color: red;
+}
+
+span {
+  display: inline-block;
+  margin: 5px;
+}
+
+.samename {
+  color: var(--samename);
+}
+
+.demo1 {
+  color: #f00;
+  color: var(--success);
+}
+
+.demo2 {
+  color: #f00;
+  color: var(--success2);
+}
+
+.demo3 {
+  color: #f00;
+  color: var(--halfsuccess);
+  color: var(--success);
+}
+
+.demo4 {
+  color: red;
+  border-color: #f00;
+}
+
+.inlineoverlink {
+  color: #f00;
+}
+
+p {
+  padding: var(--spacing-l);
+}
+
+.lower {
+  color: var(--foo);
+}
+
+.upper {
+  color: var(--FOO);
+}
+
+.externalcolor {
+  color: var(--externalcolor);
+}
+
+.fallback {
+  color: #f00;
+  color: var(--wrongname, green);
+}
+
+.supports {
+  color: green;
+}
+.supports .no {
+  display: none;
+}
+
+.showforpolyfill {
+  display: none;
+}
+
+.cssvars-polyfilled .supports {
+  color: red;
+}
+.cssvars-polyfilled .supports .no {
+  display: inline;
+}
+.cssvars-polyfilled .showforpolyfill {
+  display: inline;
+}
+.cssvars-polyfilled .hideforpolyfill {
+  display: none;
+}
+
+.hide,
+.hide-the-docs .documentation {
+  display: none;
+}
+
+/* declare some font-family stuff at bottom of file to reflect on stuff above it*/
+:root {
+  --fontsans: arial;
+}
