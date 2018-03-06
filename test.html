@@ -12,11 +12,12 @@
   <div class="documentation">
     <!-- Copy below for codepen update -->
     <h1>CSS Variables Polyfill</h1>
+    <p>This is now managed (and available for PRs) at <a href="https://github.com/aaronbarker/css-variables-polyfill">https://github.com/aaronbarker/css-variables-polyfill</a>.</p>
     <p>
-      This is an attempt at a very basic <a href="https://drafts.csswg.org/css-variables/">CSS variables (custom properties)</a> polyfil. In reality this is more of a <em>partial</em> polyfill as it will not cover variables inside of variables, DOM scoping or anything else "fancy". Just taking variables declared anywhere in the CSS and
+      This is an attempt at a very basic <a href="https://drafts.csswg.org/css-variables/">CSS variables (custom properties)</a> polyfill. In reality this is more of a <em>partial</em> polyfill as it will not cover variables inside of variables, DOM scoping, updating via media query firing, or anything else "fancy". Just taking variables declared anywhere in the CSS and
       then re-parsing the CSS for var() statements and replacing them in browsers that don't natively support CSS variables.
     </p>
-    <p>According to <a href="http://caniuse.com/#feat=css-variables">caniuse.com</a>, of current browsers only IE, Edge and Opera Mini do not support CSS variables. This polyfil appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.</p>
+    <p>According to <a href="http://caniuse.com/#feat=css-variables">caniuse.com</a>, of current browsers only IE, Edge 12-15 and Opera Mini do not support CSS variables. This polyfil appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.</p>
 
     <p>As far as we can tell your browser <span class="supports">does <span class="no">not</span> support</span> native CSS variables. <span class="showforpolyfill">That means if you see green tests results below, it is thanks to the polyfill :).</span> <span class="hideforpolyfill">All the green test results below are actually native CSS Variable support.  Good job using a good browser :)</span></p>
     
