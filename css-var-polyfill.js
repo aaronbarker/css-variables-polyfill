@@ -1,3 +1,11 @@
+/*!
+ * css-var-polyfill.js - v1.0.0
+ *
+ * Copyright (c) 2018 Aaron Barker <http://aaronbarker.net>
+ * Released under the MIT license
+ *
+ * Date: 2018-03-09
+ */
 let cssVarPoly = {
   init: function() {
     // first lets see if the browser supports CSS variables
@@ -41,7 +49,7 @@ let cssVarPoly = {
         // console.log("link");
         cssVarPoly.getLink(block.getAttribute('href'), counter, function(counter, request) {
           cssVarPoly.findSetters(request.responseText, counter);
-          cssVarPoly.oldCSS[counter] = request.responseText;
+          cssVarPoly.oldCSS[counter] = request.r esponseText;
           cssVarPoly.updateCSS();
         });
         theCSS = '';
