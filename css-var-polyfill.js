@@ -32,7 +32,7 @@ let cssVarPoly = {
   
   // find all the css blocks, save off the content, and look for variables
   findCSS: function() {
-    let styleBlocks = document.querySelectorAll('style:not(.inserted),link[type="text/css"]');
+    let styleBlocks = document.querySelectorAll('style:not(.inserted),link[rel="stylesheet"]');
 
     // we need to track the order of the style/link elements when we save off the CSS, set a counter
     let counter = 1;
