@@ -49,7 +49,7 @@ let cssVarPoly = {
         // console.log("link");
         cssVarPoly.getLink(block.getAttribute('href'), counter, function(counter, request) {
           cssVarPoly.findSetters(request.responseText, counter);
-          cssVarPoly.oldCSS[counter] = request.r esponseText;
+          cssVarPoly.oldCSS[counter] = request.responseText;
           cssVarPoly.updateCSS();
         });
         theCSS = '';
