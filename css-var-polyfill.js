@@ -73,7 +73,7 @@ let cssVarPoly = {
 
     // loop through the css blocks (styles and links)
     for (let curCSSID in cssVarPoly.oldCSS) {
-      // console.log("curCSS:",oldCSS[curCSSID]);
+      // console.log("curCSS:", cssVarPoly.oldCSS[curCSSID]);
       let newCSS = cssVarPoly.replaceGetters(cssVarPoly.oldCSS[curCSSID], cssVarPoly.ratifiedVars);
       // put it back into the page
       // first check to see if this block exists already
@@ -142,7 +142,7 @@ let cssVarPoly = {
         cssVarPoly.ratifiedVars[matches[0]] = matches[1].replace(/;/, '');
       });
     };
-    // console.log(ratifiedVars);
+    // console.log(cssVarPoly.ratifiedVars);
   },
 
   // get the CSS file (same domain for now)
