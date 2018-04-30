@@ -1,10 +1,10 @@
 /*!
- * css-var-polyfill.js - v1.0.0
+ * css-var-polyfill.js - v1.1.0
  *
  * Copyright (c) 2018 Aaron Barker <http://aaronbarker.net>
  * Released under the MIT license
  *
- * Date: 2018-03-09
+ * Date: 2018-04-30
  */
 let cssVarPoly = {
   init: function() {
