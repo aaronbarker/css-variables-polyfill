@@ -24,15 +24,15 @@ let cssVarPoly = {
     cssVarPoly.ratifiedVars = {};
     cssVarPoly.varsByBlock = {};
     cssVarPoly.oldCSS = {};
-    
+
     // start things off
     cssVarPoly.findCSS();
     cssVarPoly.updateCSS();
   },
-  
+
   // find all the css blocks, save off the content, and look for variables
   findCSS: function() {
-    let styleBlocks = document.querySelectorAll('style:not(.inserted),link[rel="stylesheet"]');
+    let styleBlocks = document.querySelectorAll('style:not(.inserted),link[rel="stylesheet"],link[rel="import"]');
 
     // we need to track the order of the style/link elements when we save off the CSS, set a counter
     let counter = 1;

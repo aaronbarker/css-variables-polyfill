@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Polyfill test</title>
+  <script src="webcomponents-lite.js"></script><!-- needed for HTML imports in some browsers -->
   <link rel="stylesheet" type="text/css" media="all" href="test.css">
   <link rel="stylesheet" type="text/css" media="all" href="http://aaronbarker.net/cssvars/vars.css?a">
+  <link rel="import" href="test-import.html">
 </head>
 <body>
   <div class="documentation">
@@ -20,7 +22,7 @@
     <p>According to <a href="http://caniuse.com/#feat=css-variables">caniuse.com</a>, of current browsers only IE, Edge 12-15 and Opera Mini do not support CSS variables. This polyfil appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.</p>
 
     <p>As far as we can tell your browser <span class="supports">does <span class="no">not</span> support</span> native CSS variables. <span class="showforpolyfill">That means if you see green tests results below, it is thanks to the polyfill :).</span> <span class="hideforpolyfill">All the green test results below are actually native CSS Variable support.  Good job using a good browser :)</span></p>
-    
+
     <h3>Does this work on externally CSS files?</h3>
     <p>Yes!</p>
     <h3>Even ones loaded from another domain?</h3>
@@ -33,9 +35,14 @@
     :root {
       --newcolor: #0f0;
     }
-    
+
     .inlineoverlink {
       color: var(--success2);
+    }
+
+    .html-import-vars {
+      color: var(--import-white);
+      background-color: var(--import-purple);
     }
   </style>
   <h2>Tests</h2>
@@ -51,7 +58,7 @@
     <li><span class="fallback">uses fallback <code>--var(--wrongname, green)</code></span></li>
     <li><span class="demo-import">css declared in an <code>@import</code></span> - not polyfilled yet. <a href="https://gist.github.com/stramel/91d05253f801f771da38b3bc7d3c765f#gistcomment-2258818">Identfied with a suggested fix</a>, but will require a bit of a re-write (to use document.styleSheets), so haven't done it yet.</li>
   </ul>
-  
+
 
   <h2>Tests on external, cross-domain file</h2>
   <div class="documentation">
@@ -66,6 +73,9 @@
     <li><span class="externalfallback">uses fallback. should be green</span></li>
   </ul>
 
+  <h2>HTML imports</h2>
+  <p class="html-import-debug">This text should be purple and bold because it was styled by a style tag in an HTML import. If it's not, your browser is not importing HTML.</p>
+  <p class="html-import-vars">This text should be white on a purple background because of the variables imported from HTML.</p>
 
   <p>Another set of text under the test for Opera Mini testing.</p>
   <!-- Copy above for codepen update -->
