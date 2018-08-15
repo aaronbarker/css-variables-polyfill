@@ -63,7 +63,7 @@ let cssVarPoly = {
   // find all the "--variable: value" matches in a provided block of CSS and add them to the master list
   findSetters: function(theCSS, counter) {
     // console.log(theCSS);
-    cssVarPoly.varsByBlock[counter] = theCSS.match(/(--.+:.+;)/g) || [];
+    cssVarPoly.varsByBlock[counter] = theCSS.match(/(--[a-zA-z0-9]+[a-zA-Z0-9\-\_]+ *:.+;?\}?)/g) || [];
   },
 
   // run through all the CSS blocks to update the variables and then inject on the page
