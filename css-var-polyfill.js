@@ -104,7 +104,8 @@ let cssVarPoly = {
       curCSS = curCSS.replace(getterRegex, varList[theVar]);
 
       // now check for any getters that are left that have fallbacks
-      let getterRegex2 = new RegExp('var\\(\\s*.+\\s*,\\s*(.+)\\)', 'g');
+      //let getterRegex2 = new RegExp('var\\(\\s*.+\\s*,\\s*(.+)\\)', 'g');
+      let getterRegex2 = new RegExp('var\\([^\\)]+,\\s*([^\\)]+)\\)', 'g');
       // console.log(getterRegex);
       // console.log(curCSS);
       let matches = curCSS.match(getterRegex2);
@@ -113,7 +114,8 @@ let cssVarPoly = {
         matches.forEach(function(match) {
           // console.log(match.match(/var\(.+,\s*(.+)\)/))
           // find the fallback within the getter
-          curCSS = curCSS.replace(match, match.match(/var\(.+,\s*(.+)\)/)[1]);
+          //curCSS = curCSS.replace(match, match.match(/var\(.+,\s*(.+)\)/)[1]);
+          curCSS = curCSS.replace(match, match.match(/var\([^\)]+,\s*([^\)]+)\)/)[1]);
         });
 
       }
