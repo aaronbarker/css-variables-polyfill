@@ -6,9 +6,13 @@ This is an attempt at a very basic [CSS variables (custom properties)](https://d
 According to [caniuse.com](https://caniuse.com/#feat=css-variables), of current browsers only IE, Edge and Opera Mini do not support CSS variables. This polyfil appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.
 
 # Changelog
+## 1.1.2 - 2019-03-23
+- Update findSetters and replaceGetters (thanks @CodeZeno)
+
 ## 1.1.1 - 2018-04-30
 - Add support for HTML Imports (thanks @Pilatch)
 - Misc IE11 fixes (thanks @proteantech)
+
 ## 1.0.0 - 2018-03-09
 - Initial release, pulled in from codepen
 
