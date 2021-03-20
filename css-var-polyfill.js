@@ -32,15 +32,15 @@ let cssVarPoly = {
 
   // find all the css blocks, save off the content, and look for variables
   findCSS: function() {
-    let styleBlocks = document.querySelectorAll('style:not(.inserted),link[rel="stylesheet"],link[rel="import"]');
+    var styleBlocks = document.querySelectorAll('style:not(.inserted),link[rel="stylesheet"],link[rel="import"]');
 
     // we need to track the order of the style/link elements when we save off the CSS, set a counter
-    let counter = 1;
+    var counter = 1;
 
     // loop through all CSS blocks looking for CSS variables being set
     [].forEach.call(styleBlocks, function(block) {
       // console.log(block.nodeName);
-      let theCSS;
+      var theCSS;
       if (block.nodeName === 'STYLE') {
         // console.log("style");
         theCSS = block.innerHTML;
@@ -72,9 +72,9 @@ let cssVarPoly = {
     cssVarPoly.ratifySetters(cssVarPoly.varsByBlock);
 
     // loop through the css blocks (styles and links)
-    for (let curCSSID in cssVarPoly.oldCSS) {
+    for (var curCSSID in cssVarPoly.oldCSS) {
       // console.log("curCSS:", cssVarPoly.oldCSS[curCSSID]);
-      let newCSS = cssVarPoly.replaceGetters(cssVarPoly.oldCSS[curCSSID], cssVarPoly.ratifiedVars);
+      var newCSS = cssVarPoly.replaceGetters(cssVarPoly.oldCSS[curCSSID], cssVarPoly.ratifiedVars);
       // put it back into the page
       // first check to see if this block exists already
       if (document.querySelector('#inserted' + curCSSID)) {
@@ -95,19 +95,19 @@ let cssVarPoly = {
   // parse a provided block of CSS looking for a provided list of variables and replace the --var-name with the correct value
   replaceGetters: function(curCSS, varList) {
     // console.log(varList);
-    for (let theVar in varList) {
+    for (var theVar in varList) {
       // console.log(theVar);
       // match the variable with the actual variable name
-      let getterRegex = new RegExp('var\\(\\s*' + theVar + '\\s*\\)', 'g');
+      var getterRegex = new RegExp('var\\(\\s*' + theVar + '\\s*\\)', 'g');
       // console.log(getterRegex);
       // console.log(curCSS);
       curCSS = curCSS.replace(getterRegex, varList[theVar]);
 
       // now check for any getters that are left that have fallbacks
-      let getterRegex2 = new RegExp('var\\([^\\)]+,\\s*([^\\)]+)\\)', 'g');
+      var getterRegex2 = new RegExp('var\\([^\\)]+,\\s*([^\\)]+)\\)', 'g');
       // console.log(getterRegex);
       // console.log(curCSS);
-      let matches = curCSS.match(getterRegex2);
+      var matches = curCSS.match(getterRegex2);
       if (matches) {
         // console.log("matches",matches);
         matches.forEach(function(match) {
@@ -128,14 +128,14 @@ let cssVarPoly = {
   ratifySetters: function(varList) {
     // console.log("varList:",varList);
     // loop through each block in order, to maintain order specificity
-    for (let curBlock in varList) {
-      let curVars = varList[curBlock];
+    for (var curBlock in varList) {
+      var curVars = varList[curBlock];
       // console.log("curVars:",curVars);
       // loop through each var in the block
       curVars.forEach(function(theVar) {
         // console.log(theVar);
         // split on the name value pair separator
-        let matches = theVar.split(/:\s*/);
+        var matches = theVar.split(/:\s*/);
         // console.log(matches);
         // put it in an object based on the varName. Each time we do this it will override a previous use and so will always have the last set be the winner
         // 0 = the name, 1 = the value, strip off the ; if it is there
