@@ -1,10 +1,10 @@
 /*!
- * css-var-polyfill.js - v1.1.2
+ * css-var-polyfill.js - v1.2
  *
  * Copyright (c) 2019 Aaron Barker <http://aaronbarker.net>
  * Released under the MIT license
  *
- * Date: 2019-03-23
+ * Date: 2021-03-19
  */
 let cssVarPoly = {
   init: function() {
@@ -63,7 +63,8 @@ let cssVarPoly = {
   // find all the "--variable: value" matches in a provided block of CSS and add them to the master list
   findSetters: function(theCSS, counter) {
     // console.log(theCSS);
-    cssVarPoly.varsByBlock[counter] = theCSS.match(/(--[^:)]+:[\s]*[^;}]+)/g) || [];
+    // tests for the following at https://regex101.com/r/kWwUmp/3
+    cssVarPoly.varsByBlock[counter] = theCSS.match(/(--[\w-]+:[\s]*[^;\n}]+)/g) || [];
   },
 
   // run through all the CSS blocks to update the variables and then inject on the page

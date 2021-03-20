@@ -6,6 +6,10 @@ This is an attempt at a very basic [CSS variables (custom properties)](https://d
 According to [caniuse.com](https://caniuse.com/#feat=css-variables), of current browsers only IE, Edge and Opera Mini do not support CSS variables. This polyfill appears to work on all three really well. I don't see why this wouldn't work on older browsers as well, but I haven't been able to test it on them yet.
 
 # Changelog
+## 1.2 - 2021-03-19
+- Update findSetters regex and add external test https://regex101.com/r/kWwUmp/3 (some day I will learn to write test cases)
+- `let` to `var` for better old browser support
+
 ## 1.1.2 - 2019-03-23
 - Update findSetters and replaceGetters (thanks @CodeZeno)
 
